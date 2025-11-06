@@ -5,19 +5,24 @@ class Book{
   public $title;
   public $author;
   private $price;
+  private const CATEGORY = "Literature";
+  private static $count = 0;
 
   public function __construct($title, $author, $price = 0){
     $this -> title = $title;
     $this -> author = $author;
     $this -> price = $price;
+
+    self::$count++; // increases count by 1 every time the constructor is called.
   }
 
   public function getDetails(){
-    return "{$this->title} by {$this->author}";
+    return "{$this->title} by {$this->author} (" . self::CATEGORY . ")";
   }
 
   public function __destruct(){
     echo "Book object destroyed<br>";
+    self::$count--; // decreases count by 1 every time the destructor is called.
   }
 
   public function setPrice($p){
@@ -26,6 +31,10 @@ class Book{
 
   public function getPrice(){
     return "{$this->title} costs \${$this->price}<br>";
+  }
+
+  public static function getCount(){
+    return "There are " . self::$count . " books";
   }
   
 }
@@ -38,7 +47,9 @@ echo $book2->getDetails();
 
 $book3 = new Book("Tarzan", "Edgar Rice Burroughs");
 echo $book3->getDetails() . "<br>";
+echo Book::getCount();
 unset($book3);
+echo Book::getCount();
 
 $book4 = new Book("Dune", "Frank Herbert", 19.99);
 
