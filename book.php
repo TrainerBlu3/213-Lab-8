@@ -21,7 +21,7 @@ class Book{
   }
 
   public function __destruct(){
-    echo "Book object destroyed<br>";
+    echo "Book object destroyed\n";
     self::$count--; // decreases count by 1 every time the destructor is called.
   }
 
@@ -30,7 +30,7 @@ class Book{
   }
 
   public function getPrice(){
-    return "{$this->title} costs \${$this->price}<br>";
+    return "{$this->title} costs \${$this->price}\n";
   }
 
   public static function getCount(){
@@ -42,22 +42,22 @@ class Book{
 $book1 = new Book("The Great Gatsby", "F. Scott Fitzgerald");
 $book2 = new Book("The Way of Kings", "Brandon Sanderson");
 
-echo $book1->getDetails() . "<br>";
-echo $book2->getDetails();
+echo $book1->getDetails() . "\n";
+echo $book2->getDetails() . "\n";
 
 $book3 = new Book("Tarzan", "Edgar Rice Burroughs");
-echo $book3->getDetails() . "<br>";
-echo Book::getCount();
+echo $book3->getDetails() . "\n";
+echo Book::getCount() . "\n";
 unset($book3);
-echo Book::getCount();
+echo Book::getCount() . "\n";
 
 $book4 = new Book("Dune", "Frank Herbert", 19.99);
 
-echo $book4->getDetails() . "<br>";
-echo $book4->getPrice() . "<br>";
+echo $book4->getDetails() . "\n";
+echo $book4->getPrice() . "\n";
 
 $book4->setPrice(24.99);
-echo $book4->getPrice() . "<br>";
+echo $book4->getPrice() . "\n";
 
 class Textbook extends Book {
         public $subject;
@@ -69,5 +69,5 @@ class Textbook extends Book {
 
 $textbook = new Textbook("Math 122 ATLAS", "Stephen Brown");
 $textbook->subject = "Math";
-echo $textbook->getDetails();
+echo $textbook->getDetails() . "\n";
 ?>
