@@ -59,4 +59,15 @@ echo $book4->getPrice() . "<br>";
 $book4->setPrice(24.99);
 echo $book4->getPrice() . "<br>";
 
+class Textbook extends Book {
+        public $subject;
+
+        public function getDetails() {
+                return parent::getDetails() . " - " . $this->subject;
+        }
+}
+
+$textbook = new Textbook("Math 122 ATLAS", "Stephen Brown");
+$textbook->subject = "Math";
+echo $textbook->getDetails();
 ?>
